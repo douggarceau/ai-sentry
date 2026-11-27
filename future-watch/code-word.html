@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Family Code Word Setup · Future Watch</title>
+<meta name="description" content="AI can clone a voice from a short clip. Agree a secret code phrase with family so a panicked call asking for money can be checked in seconds.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html">FUTURE WATCH</a>
+    <nav id="site-menu" aria-label="Topics">
+      <noscript>
+        <ul class="menu">
+          <li><a href="data-centers.html">DATA CENTERS</a></li>
+          <li><a href="consumer-financial-security.html">CONSUMER FINANCIAL SECURITY</a></li>
+          <li><a href="ai-cybersecurity.html">AI CYBERSECURITY</a></li>
+          <li><a href="ai-surveillance-tracking.html">AI SURVEILLANCE &amp; TRACKING</a></li>
+        </ul>
+      </noscript>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <p class="crumb"><a href="index.html">Home</a> / <a href="ai-surveillance-tracking.html">AI SURVEILLANCE &amp; TRACKING</a> / Tool</p>
+  <h1>Family Code Word Setup</h1>
+  <p class="lede">AI can clone a voice from a short clip. Agree a secret code phrase with family so a panicked call asking for money can be checked in seconds.</p>
+  <form class="console" id="cw-form" novalidate>
+    <p class="privacy">Runs in your browser. Nothing is saved or sent.</p>
+    <p class="field" id="cw-label">Your code phrase</p>
+    <p class="stat mono" id="cw-phrase" aria-live="polite" aria-labelledby="cw-label" style="color:var(--accent)"></p>
+    <div class="buttons"><button class="btn-quiet" type="button" id="cw-new">Pick a different phrase</button></div>
+    <label class="field" for="cw-who">Who knows it (names, separated by commas)</label>
+    <input id="cw-who" name="who" placeholder="e.g. Mom, Dad, Sam, Grandma">
+    <label class="field" for="cw-out">Your plan</label>
+    <textarea id="cw-out" class="output" readonly style="min-height:300px"></textarea>
+    <div class="buttons"><button class="btn" type="button" id="cw-copy">Copy plan</button> <span id="cw-copied" class="muted" aria-live="polite"></span></div>
+    <p class="note">Share the phrase in person or on a call, not by text or email. Pick a new one if you think someone else has heard it.</p>
+  </form>
+  <p class="note">Related topics: <a href="ai-surveillance-tracking.html#voiceprint">Voiceprint Recognition</a></p>
+</main>
+<footer>
+  <p>Future Watch tools give general information, not legal or financial advice. They run in your browser and send nothing anywhere.</p>
+</footer>
+<script src="menu.js"></script>
+<script src="tools-common.js"></script>
+<script src="code-word.js"></script>
+</body>
+</html>

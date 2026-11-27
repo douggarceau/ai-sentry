@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Browser Exposure Check · Future Watch</title>
+<meta name="description" content="Every website you visit can read these details about your device without asking. Together they form a fingerprint that can follow you across sites, even without cookies.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html">FUTURE WATCH</a>
+    <nav id="site-menu" aria-label="Topics">
+      <noscript>
+        <ul class="menu">
+          <li><a href="data-centers.html">DATA CENTERS</a></li>
+          <li><a href="consumer-financial-security.html">CONSUMER FINANCIAL SECURITY</a></li>
+          <li><a href="ai-cybersecurity.html">AI CYBERSECURITY</a></li>
+          <li><a href="ai-surveillance-tracking.html">AI SURVEILLANCE &amp; TRACKING</a></li>
+        </ul>
+      </noscript>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <p class="crumb"><a href="index.html">Home</a> / <a href="ai-surveillance-tracking.html">AI SURVEILLANCE &amp; TRACKING</a> / Tool</p>
+  <h1>Browser Exposure Check</h1>
+  <p class="lede">Every website you visit can read these details about your device without asking. Together they form a fingerprint that can follow you across sites, even without cookies.</p>
+  <div class="console">
+    <p class="privacy">Runs in your browser. Nothing you enter is sent anywhere.</p>
+    <div id="bx-result" aria-live="polite"><p class="muted">Reading what your browser shares…</p></div>
+    <h3>How to share less</h3>
+    <ul>
+      <li>Use a browser with fingerprinting protection: Firefox (Enhanced Tracking Protection set to Strict), Brave, Safari, or Tor Browser for the strongest protection.</li>
+      <li>Turn on Global Privacy Control. It tells sites not to sell or share your data, and some state privacy laws, including California's, require sites to honor it.</li>
+      <li>Install fewer unusual fonts and extensions: every rare one makes you easier to single out.</li>
+      <li>A VPN hides your IP address, but not anything on this page.</li>
+    </ul>
+  </div>
+  <p class="note">Related topics: <a href="ai-surveillance-tracking.html#social-graph">Social Graph Analysis</a> · <a href="ai-surveillance-tracking.html#wifi-bluetooth">Wi-Fi &amp; Bluetooth Tracking</a></p>
+</main>
+<footer>
+  <p>Future Watch tools give general information, not legal or financial advice. They run in your browser and send nothing anywhere.</p>
+</footer>
+<script src="menu.js"></script>
+<script src="tools-common.js"></script>
+<script src="browser-exposure.js"></script>
+</body>
+</html>

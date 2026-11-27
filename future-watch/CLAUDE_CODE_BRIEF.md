@@ -85,9 +85,9 @@ These are the owner's messages from the build conversation, in order:
 | Account Recovery; Bank & Credit Card Account Takeover; Online Card Fraud; ATM Fraud & Card Skimming | **Fraud Response Plan**: tick what happened and get an ordered checklist with official links. Deadlines are calculated: the credit card dispute (Fair Credit Billing Act, 60 days after the statement) and debit/ATM liability (Regulation E: 2 business days for the $50 cap, 60 days after the statement). Business days skip weekends and Federal Reserve holidays. Progress is saved. | Built and tested, page live |
 | Credit Freezes | **Credit Freeze Tracker**: freeze status at Equifax, Experian and TransUnion for each household member (children included), with dates, end dates for temporary lifts, and each bureau's official link and phone number. | Built and tested, page live |
 | Subscriptions & Hidden Fees | **Subscription & Fee Tracker**: monthly and yearly totals. It flags charges coming in the next 7 days, free trials about to start charging, price increases and unused subscriptions. Rows can be exported as CSV. | Built and tested, page live |
-| Identity Document Upload Safety | **ID Request Check**: questions about who asked for your ID, how and why, leading to a safe, verify-first or stop verdict. | To build |
-| ATM Fraud & Card Skimming | **Skimmer Check**: an at-the-machine checklist (loose reader, keypad overlay, hidden camera, tap to pay), linked to the Fraud Response Plan. | To build |
-| Loan & Credit Offer Scams | **Loan Offer Check**: checks an offer for advance fees, guaranteed approval and pressure tactics, with a link to look up the lender's licence on NMLS Consumer Access. | To build |
+| Identity Document Upload Safety | **ID Request Check**: questions about who asked for your ID, how and why, leading to a safe, verify-first or stop verdict. | Built and tested |
+| ATM Fraud & Card Skimming | **Skimmer Check**: an at-the-machine checklist (loose reader, keypad overlay, hidden camera, tap to pay), linked to the Fraud Response Plan. | Built and tested |
+| Loan & Credit Offer Scams | **Loan Offer Check**: checks an offer for advance fees, guaranteed approval and pressure tactics, with a link to look up the lender's licence on NMLS Consumer Access. | Built and tested |
 
 ### AI Cybersecurity (defensive)
 
@@ -102,10 +102,10 @@ These are the owner's messages from the build conversation, in order:
 
 | Subcategory | Tool | Status |
 |---|---|---|
-| Digital Forensics; Geofence Searches | **Photo Location Remover**: load a JPEG to see its hidden GPS location, camera and timestamp, then save a clean copy with that data removed. | To build |
-| Social Graph Analysis; Wi-Fi & Bluetooth Tracking | **Browser Exposure Check**: shows what any website can learn about your device without asking (fingerprint details, time zone, screen, graphics card, fonts), plus how to reduce it. | To build |
-| Wi-Fi & Bluetooth Tracking | **Unwanted Tracker Check**: step-by-step checks for iPhone and Android tracker alerts, location sharing and stalkerware warning signs. | To build |
-| Voiceprint Recognition | **Family Code Word Setup**: a printable plan for checking a caller's identity against voice-clone scams. | To build |
+| Digital Forensics; Geofence Searches | **Photo Location Remover**: load a JPEG to see its hidden GPS location, camera and timestamp, then save a clean copy with that data removed. | Built and tested |
+| Social Graph Analysis; Wi-Fi & Bluetooth Tracking | **Browser Exposure Check**: shows what any website can learn about your device without asking (fingerprint details, time zone, screen, graphics card, fonts), plus how to reduce it. | Built and tested |
+| Wi-Fi & Bluetooth Tracking | **Unwanted Tracker Check**: step-by-step checks for iPhone and Android tracker alerts, location sharing and stalkerware warning signs. | Built and tested |
+| Voiceprint Recognition | **Family Code Word Setup**: a printable plan for checking a caller's identity against voice-clone scams. | Built and tested |
 | Thermal Imaging & Night Vision; Acoustic Sensors; Gait Recognition; Iris & Fingerprint Matching; Predictive Policing & Risk Scoring | Information only: there is no useful consumer tool for these. Keep the sourced sections. | Done (sections exist) |
 
 ## Already done
@@ -116,9 +116,6 @@ These are the owner's messages from the build conversation, in order:
 
 ## Still to do
 
-1. Make a page for each tool and link it from its subcategory section. Add a Tools list of links to the homepage, without changing the 35 menu labels.
-2. Build the remaining tools in the tables above.
-3. Test every tool in a browser on desktop and phone.
-4. Republish the site, commit and push.
-5. Check the outside source links once the build has internet access. The build machine blocks outside websites, so none have been opened yet.
-6. Ask the owner whether Social Media should be added, and with which subcategories.
+1. All 15 tools in the tables above are built, tested on desktop and phone, linked from their subcategories and listed on the homepage.
+2. Check the outside source links once the build has internet access. The build machine blocks outside websites, so none have been opened yet.
+3. Ask the owner whether Social Media should be added, and with which subcategories.

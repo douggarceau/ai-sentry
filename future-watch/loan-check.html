@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loan Offer Check · Future Watch</title>
+<meta name="description" content="Check a loan or credit offer for scam signs, then work out what it really costs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html">FUTURE WATCH</a>
+    <nav id="site-menu" aria-label="Topics">
+      <noscript>
+        <ul class="menu">
+          <li><a href="data-centers.html">DATA CENTERS</a></li>
+          <li><a href="consumer-financial-security.html">CONSUMER FINANCIAL SECURITY</a></li>
+          <li><a href="ai-cybersecurity.html">AI CYBERSECURITY</a></li>
+          <li><a href="ai-surveillance-tracking.html">AI SURVEILLANCE &amp; TRACKING</a></li>
+        </ul>
+      </noscript>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <p class="crumb"><a href="index.html">Home</a> / <a href="consumer-financial-security.html">CONSUMER FINANCIAL SECURITY</a> / Tool</p>
+  <h1>Loan Offer Check</h1>
+  <p class="lede">Check a loan or credit offer for scam signs, then work out what it really costs.</p>
+  <div class="console">
+    <p class="privacy">Runs in your browser. Saved only on this device; nothing is sent anywhere.</p>
+    <div data-checklist="loan"></div>
+  </div>
+  <form class="console" id="lc-form" novalidate>
+    <h2 class="eyebrow" style="margin:0">Cost of an offer with an APR</h2>
+    <div class="form-grid">
+      <div><label class="field" for="lc-amount">Loan amount ($)</label><input type="number" id="lc-amount" name="amount" min="0" step="50" value="5000"></div>
+      <div><label class="field" for="lc-apr">APR (%)</label><input type="number" id="lc-apr" name="apr" min="0" step="0.1" value="24"></div>
+      <div><label class="field" for="lc-months">Length (months)</label><input type="number" id="lc-months" name="months" min="1" step="1" value="36"></div>
+      <div><label class="field" for="lc-fee">Fee taken out of the loan ($)</label><input type="number" id="lc-fee" name="fee" min="0" step="10" value="0"></div>
+    </div>
+    <div id="lc-out" aria-live="polite"></div>
+  </form>
+  <form class="console" id="lc2-form" novalidate>
+    <h2 class="eyebrow" style="margin:0">Find the true APR of an offer that only quotes payments</h2>
+    <div class="form-grid">
+      <div><label class="field" for="lc2-cash">Money you receive ($)</label><input type="number" id="lc2-cash" name="cash" min="0" step="10" value="500"></div>
+      <div><label class="field" for="lc2-pay">Each payment ($)</label><input type="number" id="lc2-pay" name="pay" min="0" step="1" value="75"></div>
+      <div><label class="field" for="lc2-count">Number of payments</label><input type="number" id="lc2-count" name="count" min="1" step="1" value="10"></div>
+      <div><label class="field" for="lc2-every">Paid every</label><select id="lc2-every" name="every"><option value="biweekly">2 weeks</option><option value="weekly">Week</option><option value="monthly">Month</option></select></div>
+    </div>
+    <div id="lc2-out" aria-live="polite"></div>
+    <p class="note">The example shows a typical installment payday loan. Results are estimates; your contract's disclosed APR is the legal figure.</p>
+  </form>
+  <p class="note">Related topics: <a href="consumer-financial-security.html#loan-credit-scams">Loan &amp; Credit Offer Scams</a></p>
+</main>
+<footer>
+  <p>Future Watch tools give general information, not legal or financial advice. They run in your browser and send nothing anywhere.</p>
+</footer>
+<script src="menu.js"></script>
+<script src="tools-common.js"></script>
+<script src="checklists.js"></script>
+<script src="loan-calc.js"></script>
+</body>
+</html>

@@ -18,6 +18,13 @@ TOOL_LIST = [
     ("email-headers.html", "Email Header Analyzer", "cyber", "Check whether an email really came from its sender."),
     ("password-tool.html", "Password Checker & Generator", "cyber", "Test a password and generate strong ones."),
     ("file-hash.html", "File Hash Verifier", "cyber", "Confirm a download hasn't been tampered with."),
+    ("id-check.html", "ID Request Check", "consumer", "Check a request for your ID before you upload it."),
+    ("skimmer-check.html", "Skimmer Check", "consumer", "Spot a skimmer at an ATM or gas pump."),
+    ("loan-check.html", "Loan Offer Check", "consumer", "Spot loan scams and see an offer's true cost."),
+    ("photo-privacy.html", "Photo Location Remover", "surv", "See and remove the location hidden in a photo."),
+    ("browser-exposure.html", "Browser Exposure Check", "surv", "See what websites learn about your device."),
+    ("tracker-check.html", "Unwanted Tracker Check", "surv", "Check your phone and belongings for tracking."),
+    ("code-word.html", "Family Code Word Setup", "surv", "Protect your family from voice-clone scam calls."),
 ]
 
 PRIVACY = '<p class="privacy">Runs in your browser. Nothing you enter is sent anywhere.</p>'
@@ -239,6 +246,102 @@ tool_page("file-hash.html", "File Hash Verifier", "cyber",
   </div>""",
     ["file-hash.js"],
     [("Supply Chain, Privacy & Governance", "supply-chain-privacy-governance")])
+
+def checklist_page(fname, name, cat, key, lede, related, extra=""):
+    tool_page(fname, name, cat, lede, f"""  <div class="console">
+    {PRIVACY_SAVED}
+    <div data-checklist="{key}"></div>
+  </div>{extra}""", ["checklists.js"] + (["loan-calc.js"] if key == "loan" else []), related)
+
+checklist_page("id-check.html", "ID Request Check", "consumer", "idcheck",
+    "Someone wants a photo of your driver's license, passport or a selfie. Tick what applies to find out whether it's safe to send.",
+    [("Identity Document Upload Safety", "id-upload-safety"), ("Credit Freezes", "credit-freezes")])
+
+checklist_page("skimmer-check.html", "Skimmer Check", "consumer", "skimmer",
+    "Use this at the ATM or gas pump, before you insert your card.",
+    [("ATM Fraud & Card Skimming", "atm-skimming")])
+
+checklist_page("loan-check.html", "Loan Offer Check", "consumer", "loan",
+    "Check a loan or credit offer for scam signs, then work out what it really costs.",
+    [("Loan & Credit Offer Scams", "loan-credit-scams")],
+    extra = """
+  <form class="console" id="lc-form" novalidate>
+    <h2 class="eyebrow" style="margin:0">Cost of an offer with an APR</h2>
+    <div class="form-grid">
+      <div><label class="field" for="lc-amount">Loan amount ($)</label><input type="number" id="lc-amount" name="amount" min="0" step="50" value="5000"></div>
+      <div><label class="field" for="lc-apr">APR (%)</label><input type="number" id="lc-apr" name="apr" min="0" step="0.1" value="24"></div>
+      <div><label class="field" for="lc-months">Length (months)</label><input type="number" id="lc-months" name="months" min="1" step="1" value="36"></div>
+      <div><label class="field" for="lc-fee">Fee taken out of the loan ($)</label><input type="number" id="lc-fee" name="fee" min="0" step="10" value="0"></div>
+    </div>
+    <div id="lc-out" aria-live="polite"></div>
+  </form>
+  <form class="console" id="lc2-form" novalidate>
+    <h2 class="eyebrow" style="margin:0">Find the true APR of an offer that only quotes payments</h2>
+    <div class="form-grid">
+      <div><label class="field" for="lc2-cash">Money you receive ($)</label><input type="number" id="lc2-cash" name="cash" min="0" step="10" value="500"></div>
+      <div><label class="field" for="lc2-pay">Each payment ($)</label><input type="number" id="lc2-pay" name="pay" min="0" step="1" value="75"></div>
+      <div><label class="field" for="lc2-count">Number of payments</label><input type="number" id="lc2-count" name="count" min="1" step="1" value="10"></div>
+      <div><label class="field" for="lc2-every">Paid every</label><select id="lc2-every" name="every"><option value="biweekly">2 weeks</option><option value="weekly">Week</option><option value="monthly">Month</option></select></div>
+    </div>
+    <div id="lc2-out" aria-live="polite"></div>
+    <p class="note">The example shows a typical installment payday loan. Results are estimates; your contract's disclosed APR is the legal figure.</p>
+  </form>""")
+
+checklist_page("tracker-check.html", "Unwanted Tracker Check", "surv", "tracker",
+    "Worried someone is tracking your location through a hidden tracker, your phone or your accounts? Tick the signs, then work through the checks for your phone.",
+    [("Wi-Fi & Bluetooth Tracking", "wifi-bluetooth"), ("Geofence Searches", "geofence")])
+
+tool_page("photo-privacy.html", "Photo Location Remover", "surv",
+    "Phone photos often hide the exact GPS location where they were taken, plus the camera and time. See what yours reveals and save a clean copy.",
+    f"""  <div class="console">
+    {PRIVACY}
+    <div class="dropzone" id="ph-drop">
+      <label class="field" for="ph-file" style="margin-top:0">Choose or drop a photo (JPEG or PNG)</label>
+      <input type="file" id="ph-file" accept="image/jpeg,image/png,.jpg,.jpeg,.png,.heic,.heif">
+      <p class="note">The photo is read on your device and never uploaded.</p>
+    </div>
+    <div class="result" id="ph-result" hidden aria-live="polite"></div>
+    <h3>Stop new photos recording your location</h3>
+    <ul>
+      <li><strong>iPhone:</strong> Settings › Privacy &amp; Security › Location Services › Camera › Never. When sharing a photo, tap <em>Options</em> at the top of the share sheet and turn off <em>Location</em>.</li>
+      <li><strong>Android:</strong> open the Camera app's settings and turn off <em>Location tags</em> (or <em>Save location</em>). Google Photos can also remove location when you share.</li>
+    </ul>
+  </div>""",
+    ["photo-privacy.js"],
+    [("Digital Forensics", "digital-forensics"), ("Geofence Searches", "geofence"), ("Identity Document Upload Safety", "id-upload-safety")])
+
+tool_page("browser-exposure.html", "Browser Exposure Check", "surv",
+    "Every website you visit can read these details about your device without asking. Together they form a fingerprint that can follow you across sites, even without cookies.",
+    f"""  <div class="console">
+    {PRIVACY}
+    <div id="bx-result" aria-live="polite"><p class="muted">Reading what your browser shares…</p></div>
+    <h3>How to share less</h3>
+    <ul>
+      <li>Use a browser with fingerprinting protection: Firefox (Enhanced Tracking Protection set to Strict), Brave, Safari, or Tor Browser for the strongest protection.</li>
+      <li>Turn on Global Privacy Control. It tells sites not to sell or share your data, and some state privacy laws, including California's, require sites to honor it.</li>
+      <li>Install fewer unusual fonts and extensions: every rare one makes you easier to single out.</li>
+      <li>A VPN hides your IP address, but not anything on this page.</li>
+    </ul>
+  </div>""",
+    ["browser-exposure.js"],
+    [("Social Graph Analysis", "social-graph"), ("Wi-Fi & Bluetooth Tracking", "wifi-bluetooth")])
+
+tool_page("code-word.html", "Family Code Word Setup", "surv",
+    "AI can clone a voice from a short clip. Agree a secret code phrase with family so a panicked call asking for money can be checked in seconds.",
+    f"""  <form class="console" id="cw-form" novalidate>
+    <p class="privacy">Runs in your browser. Nothing is saved or sent.</p>
+    <p class="field" id="cw-label">Your code phrase</p>
+    <p class="stat mono" id="cw-phrase" aria-live="polite" aria-labelledby="cw-label" style="color:var(--accent)"></p>
+    <div class="buttons"><button class="btn-quiet" type="button" id="cw-new">Pick a different phrase</button></div>
+    <label class="field" for="cw-who">Who knows it (names, separated by commas)</label>
+    <input id="cw-who" name="who" placeholder="e.g. Mom, Dad, Sam, Grandma">
+    <label class="field" for="cw-out">Your plan</label>
+    <textarea id="cw-out" class="output" readonly style="min-height:300px"></textarea>
+    <div class="buttons"><button class="btn" type="button" id="cw-copy">Copy plan</button> <span id="cw-copied" class="muted" aria-live="polite"></span></div>
+    <p class="note">Share the phrase in person or on a call, not by text or email. Pick a new one if you think someone else has heard it.</p>
+  </form>""",
+    ["code-word.js"],
+    [("Voiceprint Recognition", "voiceprint")])
 
 # ---- Homepage ----
 groups = ""

@@ -171,7 +171,7 @@ h1 { font-size: clamp(30px, 5.4vw, 46px); line-height: 1.08; letter-spacing: -.0
 .privacy::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 8px var(--ok); flex: none; }
 
 fieldset.plain { border: 0; padding: 0; margin: 0; min-width: 0; }
-label.field, legend.field { display: block; padding: 0; font: 600 12px/1.4 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 14px 0 6px; }
+label.field, legend.field, p.field { display: block; padding: 0; font: 600 12px/1.4 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 14px 0 6px; }
 textarea, input[type="text"], input[type="url"], input[type="number"], input[type="date"], input[type="password"], input:not([type]), select {
   width: 100%; font: 15px/1.5 var(--font-body); color: var(--ink);
   background: #050912; border: 1px solid var(--line-2); border-radius: var(--r); padding: 10px 12px; min-height: 44px;

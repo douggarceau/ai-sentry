@@ -275,3 +275,8 @@ table.grid { border-collapse: collapse; width: 100%; min-width: 560px; font-size
   .kv { grid-template-columns: 1fr; gap: 0; }
   .kv dd { margin-bottom: 8px; }
 }
+
+.dropzone { border: 1px dashed var(--line-2); border-radius: var(--r); padding: 22px; text-align: center; background: rgba(5, 9, 18, .6); transition: border-color .15s, background .15s; }
+.dropzone.dragging { border-color: var(--accent); background: rgba(71, 199, 255, .08); }
+.gen-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.gen-row input { flex: 1 1 260px; font-family: var(--font-mono); }

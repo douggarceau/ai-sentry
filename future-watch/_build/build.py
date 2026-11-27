@@ -27,16 +27,20 @@ FONTS = """<link rel="preconnect" href="https://fonts.googleapis.com">
 
 # Tools linked from topic sections: section id -> [(tool name, page)]
 TOOLS = {
-    "bank-impersonation": [("Scam Message Checker", "scam-checker.html")],
+    "bank-impersonation": [("Scam Message Checker", "scam-checker.html"), ("Email Header Analyzer", "email-headers.html")],
     "wire-zelle-fraud": [("Scam Message Checker", "scam-checker.html"), ("Fraud Response Plan", "response-plan.html")],
     "merchant-scams": [("Scam Message Checker", "scam-checker.html")],
     "loan-credit-scams": [("Scam Message Checker", "scam-checker.html")],
-    "account-takeover": [("Fraud Response Plan", "response-plan.html"), ("Scam Message Checker", "scam-checker.html")],
+    "account-takeover": [("Fraud Response Plan", "response-plan.html"), ("Password Checker & Generator", "password-tool.html"), ("Email Header Analyzer", "email-headers.html")],
     "online-card-fraud": [("Fraud Response Plan", "response-plan.html")],
     "account-recovery": [("Fraud Response Plan", "response-plan.html")],
     "atm-skimming": [("Fraud Response Plan", "response-plan.html")],
     "credit-freezes": [("Credit Freeze Tracker", "freeze-tracker.html")],
     "subscriptions-hidden-fees": [("Subscription & Fee Tracker", "subscriptions.html")],
+    "detection-response": [("Email Header Analyzer", "email-headers.html")],
+    "identity-endpoints-infrastructure": [("Password Checker & Generator", "password-tool.html")],
+    "vulnerability-testing": [("Prompt-Injection Scanner", "injection-scanner.html")],
+    "supply-chain-privacy-governance": [("File Hash Verifier", "file-hash.html")],
 }
 
 def links(pairs):

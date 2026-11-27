@@ -14,6 +14,10 @@ TOOL_LIST = [
     ("response-plan.html", "Fraud Response Plan", "consumer", "Step-by-step plan and legal deadlines after fraud."),
     ("freeze-tracker.html", "Credit Freeze Tracker", "consumer", "Track freezes at all three credit bureaus."),
     ("subscriptions.html", "Subscription & Fee Tracker", "consumer", "Total your subscriptions and catch renewals."),
+    ("injection-scanner.html", "Prompt-Injection Scanner", "cyber", "Find hidden AI instructions in text or web pages."),
+    ("email-headers.html", "Email Header Analyzer", "cyber", "Check whether an email really came from its sender."),
+    ("password-tool.html", "Password Checker & Generator", "cyber", "Test a password and generate strong ones."),
+    ("file-hash.html", "File Hash Verifier", "cyber", "Confirm a download hasn't been tampered with."),
 ]
 
 PRIVACY = '<p class="privacy">Runs in your browser. Nothing you enter is sent anywhere.</p>'
@@ -132,6 +136,109 @@ tool_page("subscriptions.html", "Subscription & Fee Tracker", "consumer",
   </form>""",
     ["subscriptions.js"],
     [("Subscriptions & Hidden Fees", "subscriptions-hidden-fees")])
+
+
+tool_page("injection-scanner.html", "Prompt-Injection Scanner", "cyber",
+    "AI assistants and agents read text people can't see. Paste a web page, email or document, or load a file, to find instructions hidden for an AI before you ask one to work with it.",
+    f"""  <form class="console" id="inj-form" novalidate>
+    {PRIVACY}
+    <label class="field" for="inj-input">Text or HTML</label>
+    <textarea id="inj-input" spellcheck="false" placeholder="Paste text, an email, or a page's HTML source"></textarea>
+    <label class="field" for="inj-file">Or load a file (.html, .txt, .md, .eml, .json, .csv)</label>
+    <input type="file" id="inj-file" accept=".html,.htm,.txt,.md,.eml,.json,.csv,.xml,text/*">
+    <div class="buttons">
+      <button class="btn" type="submit">Scan</button>
+      <button class="btn-quiet" type="button" id="inj-sample">Try an example</button>
+      <button class="btn-quiet" type="button" id="inj-clear">Clear</button>
+    </div>
+    <div class="result" id="inj-result" hidden aria-live="polite"></div>
+  </form>
+  <p class="note">It checks for invisible Unicode characters (including hidden "tag" text), text hidden with CSS, HTML comments, instructions in alt text and metadata, phrases that try to override an AI's instructions, data-leaking image links and encoded blocks. To view a page's HTML, right-click it and choose View Page Source.</p>""",
+    ["injection-scanner.js"],
+    [("Vulnerability Management & Security Testing", "vulnerability-testing"), ("Threat Detection & Incident Response", "detection-response")])
+
+tool_page("email-headers.html", "Email Header Analyzer", "cyber",
+    "Paste an email's full headers to see whether it really came from who it claims, using the same SPF, DKIM and DMARC checks your mail server ran.",
+    f"""  <form class="console" id="eh-form" novalidate>
+    {PRIVACY}
+    <label class="field" for="eh-input">Full email headers</label>
+    <textarea id="eh-input" spellcheck="false" placeholder="Received: from …&#10;Authentication-Results: …&#10;From: …"></textarea>
+    <div class="buttons">
+      <button class="btn" type="submit">Analyze headers</button>
+      <button class="btn-quiet" type="button" id="eh-sample">Try an example</button>
+      <button class="btn-quiet" type="button" id="eh-clear">Clear</button>
+    </div>
+    <div class="result" id="eh-result" hidden aria-live="polite"></div>
+  </form>
+  <div class="console">
+    <h2 class="eyebrow" style="margin:0">How to copy the headers</h2>
+    <ul>
+      <li><strong>Gmail (web):</strong> open the email, click the three dots next to Reply, choose <em>Show original</em>, then <em>Copy to clipboard</em>.</li>
+      <li><strong>Outlook (web or new Outlook):</strong> open the email, click the three dots, choose <em>View</em>, then <em>View message source</em>.</li>
+      <li><strong>Apple Mail (Mac):</strong> open the email, then choose <em>View</em>, <em>Message</em>, <em>All Headers</em>.</li>
+      <li><strong>Yahoo Mail:</strong> open the email, click the three dots, choose <em>View raw message</em>.</li>
+    </ul>
+  </div>""",
+    ["email-headers.js"],
+    [("Threat Detection & Incident Response", "detection-response")])
+
+tool_page("password-tool.html", "Password Checker & Generator", "cyber",
+    "See how quickly a password could be cracked and what makes it weak, then generate a strong random one.",
+    f"""  <div class="console">
+    {PRIVACY}
+    <h2 class="eyebrow" style="margin:14px 0 0">Check a password</h2>
+    <label class="field" for="pw-input">Password</label>
+    <input type="password" id="pw-input" autocomplete="off" spellcheck="false">
+    <label class="check"><input type="checkbox" id="pw-show"> <span>Show password</span></label>
+    <div id="pw-result" aria-live="polite"></div>
+    <div class="buttons"><button class="btn-quiet" type="button" id="pw-breach">Check known breaches</button></div>
+    <p class="note">The breach check is optional. It sends only the first 5 characters of the password's SHA-1 hash to the Have I Been Pwned service, which can't work out your password from that. The password itself never leaves this page.</p>
+    <div id="pw-breach-out" aria-live="polite"></div>
+  </div>
+  <form class="console" id="gen-form" novalidate>
+    <h2 class="eyebrow" style="margin:0">Generate a password</h2>
+    <label class="field" for="gen-len">Length: <span id="gen-len-out">20</span> characters</label>
+    <input type="range" id="gen-len" min="12" max="64" value="20">
+    <div class="checks">
+      <label class="check"><input type="checkbox" id="gen-upper" checked> <span>Capital letters</span></label>
+      <label class="check"><input type="checkbox" id="gen-digits" checked> <span>Numbers</span></label>
+      <label class="check"><input type="checkbox" id="gen-symbols" checked> <span>Symbols</span></label>
+      <label class="check"><input type="checkbox" id="gen-simple"> <span>Easy to read (leave out l, I, O, 0 and 1)</span></label>
+    </div>
+    <label class="field" for="gen-out">Your new password</label>
+    <div class="gen-row"><input id="gen-out" readonly spellcheck="false" aria-describedby="gen-strength"></div>
+    <p class="muted" id="gen-strength"></p>
+    <div class="buttons">
+      <button class="btn" type="submit">Generate another</button>
+      <button class="btn-quiet" type="button" id="gen-copy">Copy</button> <span id="gen-copied" class="muted" aria-live="polite"></span>
+    </div>
+    <p class="note">Use a password manager to store a different password for every account, and turn on two-step verification where you can.</p>
+  </form>""",
+    ["password-tool.js"],
+    [("Identity, Endpoints & Infrastructure", "identity-endpoints-infrastructure")])
+
+tool_page("file-hash.html", "File Hash Verifier", "cyber",
+    "Software publishers list a checksum (a fingerprint) next to their downloads. Compare it with your copy to make sure the file is exactly the one they published.",
+    f"""  <div class="console">
+    {PRIVACY}
+    <div class="dropzone" id="fh-drop">
+      <label class="field" for="fh-file" style="margin-top:0">Choose or drop a file</label>
+      <input type="file" id="fh-file">
+      <p class="note">The file is read on your device and never uploaded.</p>
+    </div>
+    <label class="field" for="fh-expected">Checksum from the publisher (SHA-256, SHA-512 or SHA-1)</label>
+    <input id="fh-expected" spellcheck="false" placeholder="Paste the long string of letters and numbers">
+    <div class="result" id="fh-result" hidden aria-live="polite"></div>
+    <h3>Or check from your computer's command line</h3>
+    <ul>
+      <li><strong>Windows (PowerShell):</strong> <code>Get-FileHash .\\file.exe -Algorithm SHA256</code></li>
+      <li><strong>Mac:</strong> <code>shasum -a 256 file.dmg</code></li>
+      <li><strong>Linux:</strong> <code>sha256sum file.iso</code></li>
+    </ul>
+    <p class="note">Only trust a checksum shown on the publisher's own website over HTTPS. A checksum next to a download on a third-party site proves nothing.</p>
+  </div>""",
+    ["file-hash.js"],
+    [("Supply Chain, Privacy & Governance", "supply-chain-privacy-governance")])
 
 # ---- Homepage ----
 groups = ""

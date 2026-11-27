@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ai Cybersecurity · Future Watch</title>
+<meta name="description" content="Defensive uses of AI in security, and how to secure AI systems, based on NIST, CISA and OWASP guidance.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html">FUTURE WATCH</a>
+    <nav id="site-menu" aria-label="Topics">
+      <noscript>
+        <ul class="menu">
+          <li><a href="data-centers.html">DATA CENTERS</a></li>
+          <li><a href="consumer-financial-security.html">CONSUMER FINANCIAL SECURITY</a></li>
+          <li><a href="ai-cybersecurity.html">AI CYBERSECURITY</a></li>
+          <li><a href="ai-surveillance-tracking.html">AI SURVEILLANCE &amp; TRACKING</a></li>
+        </ul>
+      </noscript>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <p class="crumb"><a href="index.html">Home</a> / AI CYBERSECURITY</p>
+  <h1>AI CYBERSECURITY</h1>
+  <p class="lede">Defensive uses of AI in security, and how to secure AI systems, based on NIST, CISA and OWASP guidance.</p>
+  <ul class="toc" aria-label="On this page">
+    <li><a href="#detection-response">Threat Detection &amp; Incident Response</a></li>
+    <li><a href="#identity-endpoints-infrastructure">Identity, Endpoints &amp; Infrastructure</a></li>
+    <li><a href="#vulnerability-testing">Vulnerability Management &amp; Security Testing</a></li>
+    <li><a href="#supply-chain-privacy-governance">Supply Chain, Privacy &amp; Governance</a></li>
+  </ul>
+  <section class="topic" id="detection-response" aria-labelledby="detection-response-h">
+    <h2 id="detection-response-h">Threat Detection &amp; Incident Response</h2>
+    <p>Security teams use machine learning to sort large volumes of logs and alerts, flag anomalous behavior such as impossible-travel logins or unusual data transfers, and summarize incidents for analysts. These tools assist human responders; detections still need tuning, validation and clear escalation paths.</p>
+    <p>NIST's incident response guidance (SP 800-61 Revision 3, April 2025) ties response to the six functions of the Cybersecurity Framework 2.0. MITRE ATLAS catalogs real-world tactics used against AI systems themselves, so defenders can add detections for them.</p>
+    <div class="action">
+    <h3>Take action</h3>
+    <ul>
+      <li><a href="https://www.cisa.gov/report" rel="noopener" target="_blank">CISA: report a cyber incident</a></li>
+      <li><a href="https://www.ic3.gov/" rel="noopener" target="_blank">FBI Internet Crime Complaint Center (IC3): file a complaint</a></li>
+    </ul>
+    </div>
+    <h3>Sources</h3>
+    <ul>
+      <li><a href="https://csrc.nist.gov/pubs/sp/800/61/r3/final" rel="noopener" target="_blank">NIST SP 800-61 Rev. 3: Incident Response Recommendations and Considerations for Cybersecurity Risk Management</a></li>
+      <li><a href="https://www.nist.gov/cyberframework" rel="noopener" target="_blank">NIST Cybersecurity Framework 2.0</a></li>
+      <li><a href="https://atlas.mitre.org/" rel="noopener" target="_blank">MITRE ATLAS: Adversarial Threat Landscape for AI Systems</a></li>
+    </ul>
+    <a class="top" href="#main">Back to top</a>
+  </section>
+  <section class="topic" id="identity-endpoints-infrastructure" aria-labelledby="identity-endpoints-infrastructure-h">
+    <h2 id="identity-endpoints-infrastructure-h">Identity, Endpoints &amp; Infrastructure</h2>
+    <p>Attackers increasingly log in rather than break in, using stolen credentials, session tokens and phishing that AI makes more convincing. Zero trust architecture (NIST SP 800-207) treats every request as untrusted until the user, device and context are verified.</p>
+    <p>Practical controls: phishing-resistant multi-factor authentication such as FIDO2 security keys and passkeys, endpoint detection and response on laptops and servers, least-privilege access for people and for AI agents and service accounts, and prompt patching of internet-facing systems.</p>
+    <h3>Sources</h3>
+    <ul>
+      <li><a href="https://csrc.nist.gov/pubs/sp/800/207/final" rel="noopener" target="_blank">NIST SP 800-207: Zero Trust Architecture</a></li>
+      <li><a href="https://www.cisa.gov/zero-trust-maturity-model" rel="noopener" target="_blank">CISA: Zero Trust Maturity Model</a></li>
+      <li><a href="https://www.cisa.gov/MFA" rel="noopener" target="_blank">CISA: More than a password (multi-factor authentication)</a></li>
+    </ul>
+    <a class="top" href="#main">Back to top</a>
+  </section>
+  <section class="topic" id="vulnerability-testing" aria-labelledby="vulnerability-testing-h">
+    <h2 id="vulnerability-testing-h">Vulnerability Management &amp; Security Testing</h2>
+    <p>CISA's Known Exploited Vulnerabilities catalog lists flaws attackers are actively using, and is the most practical list to patch from first. AI is now used to find bugs: Google's Big Sleep agent reported a previously unknown exploitable flaw in SQLite in 2024, and DARPA's AI Cyber Challenge had teams build systems that find and fix vulnerabilities in open-source code.</p>
+    <p>AI applications need their own testing for prompt injection, insecure output handling and excessive agent permissions; the OWASP Top 10 for Large Language Model Applications is the common checklist. Test only systems you own or are authorized to assess.</p>
+    <h3>Sources</h3>
+    <ul>
+      <li><a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" rel="noopener" target="_blank">CISA: Known Exploited Vulnerabilities Catalog</a></li>
+      <li><a href="https://genai.owasp.org/llm-top-10/" rel="noopener" target="_blank">OWASP Top 10 for Large Language Model Applications</a></li>
+      <li><a href="https://googleprojectzero.blogspot.com/2024/10/from-naptime-to-big-sleep.html" rel="noopener" target="_blank">Google Project Zero: From Naptime to Big Sleep (Oct. 2024)</a></li>
+      <li><a href="https://aicyberchallenge.com/" rel="noopener" target="_blank">DARPA AI Cyber Challenge (AIxCC)</a></li>
+    </ul>
+    <a class="top" href="#main">Back to top</a>
+  </section>
+  <section class="topic" id="supply-chain-privacy-governance" aria-labelledby="supply-chain-privacy-governance-h">
+    <h2 id="supply-chain-privacy-governance-h">Supply Chain, Privacy &amp; Governance</h2>
+    <p>AI systems depend on third-party models, datasets, libraries and plugins, each of which can be tampered with. Software supply-chain practices such as NIST's Secure Software Development Framework, software bills of materials and SLSA build provenance apply to models and their dependencies as well.</p>
+    <p>For governance, the NIST AI Risk Management Framework gives a voluntary structure (Govern, Map, Measure, Manage), and the EU AI Act sets binding obligations in the EU that phase in from 2025 to 2027. Privacy risks include training on personal data and models leaking sensitive information they were given.</p>
+    <h3>Sources</h3>
+    <ul>
+      <li><a href="https://www.nist.gov/itl/ai-risk-management-framework" rel="noopener" target="_blank">NIST AI Risk Management Framework</a></li>
+      <li><a href="https://csrc.nist.gov/pubs/sp/800/218/final" rel="noopener" target="_blank">NIST SP 800-218: Secure Software Development Framework</a></li>
+      <li><a href="https://slsa.dev/" rel="noopener" target="_blank">SLSA: Supply-chain Levels for Software Artifacts</a></li>
+      <li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" rel="noopener" target="_blank">EU Artificial Intelligence Act, Regulation (EU) 2024/1689 (official text)</a></li>
+    </ul>
+    <a class="top" href="#main">Back to top</a>
+  </section>
+</main>
+<footer>
+  <p>Future Watch summarizes published sources. Figures are as reported by the cited source on its publication date; follow the source links for current details. External links open in a new tab.</p>
+</footer>
+<script src="menu.js"></script>
+</body>
+</html>

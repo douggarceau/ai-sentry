@@ -35,12 +35,12 @@
       const next = it.cancelled ? null : nextCharge(it.date, it.cycle, today);
       const days = next ? FW.daysBetween(today, next) : null;
       if (!it.cancelled) {
-        if (it.trial && next && days <= 7) alerts.push({ level: 3, id: it.id, text: `${it.name}: free trial turns into a ${FW.money(amt)} charge ${days === 0 ? "today" : `in ${days} day${days === 1 ? "" : "s"}`} (${FW.fmt(next)}). Cancel now if you don't want it.` });
-        else if (next && days <= 7) alerts.push({ level: 2, id: it.id, text: `${it.name}: ${FW.money(amt)} renews ${days === 0 ? "today" : `in ${days} day${days === 1 ? "" : "s"}`} (${FW.fmt(next)}).` });
-        else if (it.cycle === "yearly" && next && days <= 30) alerts.push({ level: 2, id: it.id, text: `${it.name}: yearly renewal of ${FW.money(amt)} in ${days} days (${FW.fmt(next)}).` });
+        if (it.trial && next && days <= 7) alerts.push({ level: 3, tag: "Act now", id: it.id, text: `${it.name}: free trial turns into a ${FW.money(amt)} charge ${days === 0 ? "today" : `in ${days} day${days === 1 ? "" : "s"}`} (${FW.fmt(next)}). Cancel now if you don't want it.` });
+        else if (next && days <= 7) alerts.push({ level: 2, tag: "Renews soon", id: it.id, text: `${it.name}: ${FW.money(amt)} renews ${days === 0 ? "today" : `in ${days} day${days === 1 ? "" : "s"}`} (${FW.fmt(next)}).` });
+        else if (it.cycle === "yearly" && next && days <= 30) alerts.push({ level: 2, tag: "Renews soon", id: it.id, text: `${it.name}: yearly renewal of ${FW.money(amt)} in ${days} days (${FW.fmt(next)}).` });
         const prev = Number(it.previous);
-        if (prev && amt > prev) alerts.push({ level: 2, id: it.id, text: `${it.name}: price went up from ${FW.money(prev)} to ${FW.money(amt)} (${Math.round(((amt - prev) / prev) * 100)}% more, ${FW.money((amt - prev) * (PER_YEAR[it.cycle] || 0))} a year).` });
-        if (!it.used) alerts.push({ level: 1, id: it.id, text: `${it.name}: marked as not used. Cancelling saves ${FW.money(perYear)} a year.` });
+        if (prev && amt > prev) alerts.push({ level: 2, tag: "Price up", id: it.id, text: `${it.name}: price went up from ${FW.money(prev)} to ${FW.money(amt)} (${Math.round(((amt - prev) / prev) * 100)}% more, ${FW.money((amt - prev) * (PER_YEAR[it.cycle] || 0))} a year).` });
+        if (!it.used) alerts.push({ level: 1, tag: "Not used", id: it.id, text: `${it.name}: marked as not used. Cancelling saves ${FW.money(perYear)} a year.` });
       }
       return { ...it, perYear, next, days };
     });
@@ -82,7 +82,7 @@
       let h = hasExample ? `<p class="note">These three rows are examples to show how the tracker works. They disappear when you add your first subscription, or <button type="button" class="linklike" id="sub-clear-ex">remove them now</button>.</p>` : "";
       h += `<div class="stats"><div><span class="stat">${FW.money(s.monthly)}</span><span class="muted">a month</span></div><div><span class="stat">${FW.money(s.yearly)}</span><span class="muted">a year</span></div><div><span class="stat">${items.filter((i) => !i.cancelled).length}</span><span class="muted">active</span></div></div>`;
       if (s.alerts.length) {
-        h += `<h3>Needs attention</h3><ul class="findings">${s.alerts.map((a) => `<li class="sev-${a.level}"><span class="chip chip-${a.level}">${a.level === 3 ? "Act now" : a.level === 2 ? "Soon" : "Review"}</span> ${FW.esc(a.text)}</li>`).join("")}</ul>`;
+        h += `<h3>Needs attention</h3><ul class="findings">${s.alerts.map((a) => `<li class="sev-${a.level}"><span class="chip chip-${a.level}">${a.tag}</span> ${FW.esc(a.text)}</li>`).join("")}</ul>`;
       }
       if (s.rows.length) {
         h += `<h3>Your subscriptions</h3><div class="table-wrap"><table class="grid"><thead><tr><th scope="col">Name</th><th scope="col">Price</th><th scope="col">Per year</th><th scope="col">Next charge</th><th scope="col">Actions</th></tr></thead><tbody>`;

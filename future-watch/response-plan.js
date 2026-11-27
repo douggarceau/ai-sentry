@@ -34,11 +34,12 @@
     const has = (k) => sel.includes(k);
 
     if (has("sent")) {
-      add(1, "sent-call", "Call your bank or the payment app right now. Say the payment was fraud and ask them to stop, recall or reverse it. For a wire, ask the bank to send a recall request to the receiving bank. Speed matters most here.");
+      add(1, "sent-call", "Call your bank or the payment app right now, using the number on your card or statement. Say the payment was fraud and ask them to stop, recall or reverse it. For a wire, ask the bank to send a recall request to the receiving bank. Speed matters most here." +
+        (has("credit") || has("debit") || has("skim") || has("login") ? " On the same call, ask them to lock your card or account and issue a new card number." : ""));
       add(1, "giftcard", "If you paid with gift cards, contact the card company using the number on the back of the card and ask for a refund. Keep the cards and receipts.");
       add(1, "crypto", "If you paid in cryptocurrency, contact the exchange or crypto ATM operator you used and ask them to freeze the transfer.");
     }
-    if (has("credit") || has("debit") || has("skim") || has("login")) {
+    if ((has("credit") || has("debit") || has("skim") || has("login")) && !has("sent")) {
       add(1, "call-bank", "Call your bank or card issuer using the number on the back of your card or on your statement, not a number from a text, email or caller. Ask them to lock the card or account and issue a new card number.");
     }
     if (has("email")) {
@@ -88,7 +89,7 @@
     }
     if (has("credit") || has("debit") || has("skim") || has("sent") || has("login")) {
       add(4, "cfpb", "If the bank or card company doesn't resolve it, submit a complaint to the Consumer Financial Protection Bureau. The company must respond.", ["cfpb"]);
-      add(4, "reportfraud", "Report fraud to the FTC so it can be tracked and investigated.", ["reportfraud"]);
+      if (!has("sent")) add(4, "reportfraud", "Report fraud to the FTC so it can be tracked and investigated.", ["reportfraud"]);
     }
     add(5, "monitor", "Check your credit reports for accounts you don't recognize, and turn on transaction alerts for every account.", ["acr"]);
     add(5, "records", "Keep a log: who you spoke to, when, what they said, and reference numbers. Save letters, emails and screenshots.");

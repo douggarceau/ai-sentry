@@ -63,7 +63,7 @@
       why: "You can't win a contest you didn't enter, and real prizes never require payment.",
       topic: "#loan-credit-scams" },
     { id: "toll-package", weight: 2, title: "Unpaid toll or failed delivery",
-      re: /\bunpaid\s+toll\b|\btoll\s+(balance|charges?|violation)\b|\b(package|parcel|shipment)\b[^.!?\n]{0,40}\b(could\s+not|couldn'?t|unable\s+to|failed\s+to)\s+(be\s+)?deliver/i,
+      re: /\bunpaid\s+toll\b|\btoll\s+(balance|charges?|violation)\b|\b(package|parcel|shipment)\b[^.!?\n]{0,40}\b(could\s+not|couldn'?t|unable\s+to|failed\s+to)\s+(be\s+)?deliver(ed)?/i,
       why: "Fake toll and delivery texts are among the most reported text scams. Check by going to the toll agency or carrier website yourself.",
       topic: "#merchant-scams" },
     { id: "threat", weight: 2, title: "Threatens arrest, lawsuit or account closure",
